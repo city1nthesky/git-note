@@ -1,0 +1,2 @@
+# git-note
+note-git
