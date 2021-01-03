@@ -1,0 +1,14 @@
+git status
+git init
+git config --global user.name "totoro"
+git config --global user.email "city_in_the_sky@163.com"
+git status
+git add 1.c
+git status
+git commit 0m "First initial commit"
+git status
+git remote add origin https://github.com/city1nthesky/First_test.git
+git remote -v
+git branch
+git push origin master
+
