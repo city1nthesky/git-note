@@ -1,0 +1,15 @@
+--------------------------
+ssh-keygen
+cat .ssh/id_rsa.pub
+
+
+
+
+-----------------------------------
+git init
+git add file
+git commit -m "describe"
+if error
+	git remote rm origin
+git remote add origin yoururl
+git push -u origin master
