@@ -13,3 +13,26 @@ if error
 	git remote rm origin
 git remote add origin yoururl
 git push -u origin master
+
+if error ! [rejected] master -> master (fetch first) error: failed to push some refs to ' 。。.'
+//出现这个问题是因为github中的README.md文件不在本地代码目录中，可以通过如下命令进行代码合并
+	git pull --rebase origin master
+
+
+
+
+
+//新建一个分支，推送到自己的分支上
+git branch newbranch
+git branch
+//切换工作分支
+git checkout newbranch
+git add file
+git commit -m "describe"
+//将新分支提交的改动合并到主分支上
+git merge newbranch
+//git diff 来查看产生冲突的文件，然后做对应的修改再提交一次就可以了
+git push -u origin master
+//删除分支
+git branch -D/d newbranch
+如果想保留分支只是想删除已经合并的部分只要把大写的D改成小写的d就行了
