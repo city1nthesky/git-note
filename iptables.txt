@@ -52,3 +52,10 @@ iptables -A OUTPUT -p tcp --dport 80 -m time --monthdays 22,23 -j DROP
 iptables -A OUTPUT -p tcp --dport 80 -m time --weekdays 5 --monthdays 22,23,24,25,26,27,28 -j DROP
 iptables -A OUTPUT -p tcp --dport 80 -m time --datestart 2021-10-26 --datestop 2021-10-30 -j DROP
 --monthdays and --weekdays can use ! parameter
+#Limit the number of links that each ip address can connect to the server side at the same time. 
+#Note: we don’t need to specify the ip. The default is for "each client ip", 
+#that is, the limit on the number of concurrent connections for a single ip
+iptables - I INPUT -p tcp --dport 22 -m connlimit --connlimit-above 2 -j DROP
+iptables - I INPUT -p tcp --dport 22 -m connlimit ! --connlimit-above 2 -j ACCEPT
+iptables - I INPUT -p tcp --dport 22 -m connlimit --connlimit-above 2 --connlimit-mask 24 -j DROP
+iptables - I INPUT -p tcp --dport 22 -m connlimit --connlimit-above 10 --connlimit-mask 27 -j DROP
