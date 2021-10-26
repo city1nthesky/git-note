@@ -1,0 +1,13 @@
+pacman -S vsftpd
+vim /etc/vsftpd.conf
+	anonymous_enable=YES
+listen=NO
+listen_ipv6=YES
+username ftp/anonymous
+passwd rising
+
+
+systemctl enable vsftpd
+systemctl start vsftpd
+systemctl restart vsftpd
+systemctl status vsftpd

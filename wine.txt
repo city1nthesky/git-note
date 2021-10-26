@@ -1,0 +1,10 @@
+#install wine
+pacman -Ss wine
+pacman -S wine
+
+#it is not sure useful
+pacman -Ss winetricks
+pacman -S winetricks
+
+#Chinese is error
+cp c:\\Windows\\Fonts .wine/drive_c/windows/Fonts

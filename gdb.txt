@@ -1,0 +1,4 @@
+sudo gdb attach 34111
+b MainEngine::RespondClientCommand
+c
+n

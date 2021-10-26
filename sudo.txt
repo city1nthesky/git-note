@@ -1,0 +1,4 @@
+setuid(geteuid());
+setgid(getegid());
+chown root binaryfile
+chmod +s binaryfile

@@ -1,0 +1,54 @@
+#ip segment
+iptables -A INPUT -m iprange --src-range 193.168.19.105-193.168.19.120  -d 193.168.19.100 -j DROP
+iptables -A INPUT -m iprange --dst-range 193.168.19.105-193.168.19.120  -s 193.168.19.100 -j DROP
+#ip
+iptables -A INPUT -s 193.168.19.105  -d 193.168.19.100 -j DROP
+iptables -A INPUT ! -s 193.168.19.105  ! -d 193.168.19.100 -j DROP
+iptables -A INPUT -s 193.168.19.105,193.168.19.111 -d 193.168.19.100 -j DROP
+iptables -A INPUT -s 192.158.1.0/24 -d 193.168.19.100 -j DROP
+#delete chain rule
+iptables -D INPUT 1
+#list chain and rule
+iptables -L -nv
+#prot
+iptables -A INPUT -p tcp --dport 80 -j DROP
+iptables -A INPUT -p tcp -m tcp --dport 80 -j DROP
+iptables -A INPUT -p tcp ! --dport 80 -j DROP
+iptables -A INPUT -s 193.168.19.105 -p tcp --sport 80 -j DROP
+#prot segment
+iptables -A INPUT -p tcp --dport 80:100 -j DROP
+iptables -A INPUT -p tcp --dport :100 -j DROP
+iptables -A INPUT -p tcp --dport 80: -j DROP
+#multiple port
+iptables -A INPUT -s 193.168.19.105 -p tcp -m multiport --dport 22,36,80 -j DROP
+iptables -A INPUT -s 193.168.19.105 -p tcp -m multiport --dport 22,36:80 -j DROP
+#change policy
+iptables -P INPUT DROP
+#clean chain rule
+iptables -t filter -F [chain]
+#customize new chain
+iptables -t filter -N IN_RISING
+#link customizing chain
+iptables -t filter -A INPUT -p tcp --dport 80 -j IN_RISING
+#rname the customizing chain
+iptables -E IN_RISING RISING
+#delete the customizing chain
+iptables -X IN_RISING
+#data inputting from which network car 
+iptables -A INPUT -p icmp -i eth0 -j DROP
+iptables -A INPUT -p icmp ! -i eth0 -j DROP
+#data outputting from which network car 
+iptables -A OUTPUT -p icmp -o eth0 -j DROP
+iptables -A OUTPUT -p icmp ! -o eth0 -j DROP
+#data include xxx how to do
+iptables -A INPUT -m string --algo bm --string "xxx" -j DROP
+iptables -A INPUT -m string --algo kmp --string "xxx" -j DROP
+#time
+iptables -A OUTPUT -p tcp --dport 80 -m time --timestart 09:00:00 --timestop 18:00:00 -j DROP
+iptables -A OUTPUT -p tcp --dport 443 -m time --timestart 09:00:00 --timestop 18:00:00 -j DROP
+iptables -A OUTPUT -p tcp --dport 80 -m time --weekdays 6,7 -j DROP
+iptables -A OUTPUT -p tcp --dport 80 -m time --timestart 09:00:00 --timestop 18:00:00 --weekdays 6,7 -j DROP
+iptables -A OUTPUT -p tcp --dport 80 -m time --monthdays 22,23 -j DROP
+iptables -A OUTPUT -p tcp --dport 80 -m time --weekdays 5 --monthdays 22,23,24,25,26,27,28 -j DROP
+iptables -A OUTPUT -p tcp --dport 80 -m time --datestart 2021-10-26 --datestop 2021-10-30 -j DROP
+--monthdays and --weekdays can use ! parameter
