@@ -1,3 +1,4 @@
+----------------------------------host firewall start------------------------------------
 #ip segment
 iptables -A INPUT -m iprange --src-range 193.168.19.105-193.168.19.120  -d 193.168.19.100 -j DROP
 iptables -A INPUT -m iprange --dst-range 193.168.19.105-193.168.19.120  -s 193.168.19.100 -j DROP
@@ -77,3 +78,26 @@ iptables -I INPUT -p icmp [-m icmp] --icmp--type 8 -j DROP
 iptables -I INPUT -p icmp [-m icmp] --icmp--type "echo-request" -j DROP
 #-m state
 iptables -I INPUT -m state --state NEW,ESTABLISHED,RELATED,INVALID,UNTRACKED -j DROP
+#-j ACCEPT DROP REJECT
+iptables -I INPUT 2 -j REJECT --reject-with icmp-host-unreachable
+icmp-net-unreachable
+icmp-host-unreachable
+icmp-port-unreachable default
+icmp-proto-unreachable
+icmp-net-prohibited
+icmp-host-prohibited
+icmp-admin-prohibited
+#-j LOG  Record information about matched packets
+iptables -I INPUT -p tcp --dport 22  -j LOG
+--log-level  emerg,alert,crit,error,warning,notice,info,debug
+--log-prefix add tag
+iptables -I INPUT -p tcp --dport 22 -m state --state NEW -j LOG --log-prefix "want-in-from-port-22"
+----------------------------------host firewall end------------------------------------
+----------------------------------network firewall start------------------------------------
+iptables -A FORWARD -j DROP
+iptables -I FORWARD -s 10.1.0.0/16 -p tcp --dport 80 -j DROP
+iptables -I FORWARD -d 10.1.0.0/16 -p tcp --sport 80 -j DROP
+iptables -I FORWARD -s 10.1.0.0/16 -p tcp --dport 22 -j DROP
+iptables -I FORWARD -d 10.1.0.0/16 -p tcp --sport 22 -j DROP
+iptables -I FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+----------------------------------network firewall end------------------------------------
