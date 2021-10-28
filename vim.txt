@@ -1,0 +1,14 @@
+#keyboard macro
+qa-z/A-z  a operate q
+#set vim variable
+:let i=1
+:let str="xxx"
+:let i+=1
+#use keyboard macro
+normal mode @a
+#use variable
+insert mode ctr-r=i<enter>
+#view keyboard macro content
+:reg a
+#command mode useing keyboard macro
+:normal @a
