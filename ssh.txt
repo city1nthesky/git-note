@@ -1,0 +1,4 @@
+systemctl enable sshd.service
+	Created symlink /etc/systemd/system/multi-user.target.wants/sshd.service → /usr/lib/systemd/system/sshd.service.
+systemctl start sshd.service
+systemctl restart sshd.service
