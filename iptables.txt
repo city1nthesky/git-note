@@ -92,8 +92,27 @@ iptables -I INPUT -p tcp --dport 22  -j LOG
 --log-level  emerg,alert,crit,error,warning,notice,info,debug
 --log-prefix add tag
 iptables -I INPUT -p tcp --dport 22 -m state --state NEW -j LOG --log-prefix "want-in-from-port-22"
+#-j SNAT DNAT
+A:192.168.1.147  public network ip
+B:192.168.1.146  public network ip
+ :10.1.0.3		 private network ip
+C:10.1.0.1		 private network ip
+D:10.1.0.6		 private network ip
+iptables -t nat -A POSTROUTING -s 10.1.0.0/16 -j SNAT --to-source 192.168.1.146
+iptables -t nat -I PREROUTING -d 192.168.1.146 -p tcp --dport 3389 -j DNAT --to-destination 10.1.0.6:3389
+iptables -t nat -I PREROUTING -d 192.168.1.146 -p tcp --dport 801 -j DNAT --to-destination 10.1.0.1:80
+iptables -t nat -A POSTROUTING -s 10.1.0.0/16 -j SNAT --to-source 192.168.1.146
+#-j MASQUERADE like SNAT but not need to specify ip.In terms of efficiency, MASQUERADE is not as good as SNAT
+iptables -t nat -I POSTROUTING -s 10.1.0.0/16 -o eth0 -j SNAT
+#-j REDIRECT can map port in local
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
 ----------------------------------host firewall end------------------------------------
 ----------------------------------network firewall start------------------------------------
+A:192.168.1.147  public network ip
+B:192.168.1.146  public network ip
+ :10.1.0.3		 private network ip
+C:10.1.0.1		 private network ip
+D:10.1.0.6		 private network ip
 iptables -A FORWARD -j DROP
 iptables -I FORWARD -s 10.1.0.0/16 -p tcp --dport 80 -j DROP
 iptables -I FORWARD -d 10.1.0.0/16 -p tcp --sport 80 -j DROP
