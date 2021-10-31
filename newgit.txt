@@ -36,3 +36,6 @@ git push -u origin master
 //删除分支
 git branch -D/d newbranch
 如果想保留分支只是想删除已经合并的部分只要把大写的D改成小写的d就行了
+
+//eliminate local and remote differences
+git pull origin master --allow-unrelated-histories
