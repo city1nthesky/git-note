@@ -39,3 +39,4 @@ git branch -D/d newbranch
 
 //eliminate local and remote differences
 git pull origin master --allow-unrelated-histories
+git pull --rebase origin master
