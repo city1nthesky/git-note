@@ -1,6 +1,7 @@
 --------------------------
 ssh-keygen
 cat .ssh/id_rsa.pub
+ssh git@github.com
 
 
 
