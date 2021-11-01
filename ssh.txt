@@ -2,3 +2,6 @@ systemctl enable sshd.service
 	Created symlink /etc/systemd/system/multi-user.target.wants/sshd.service → /usr/lib/systemd/system/sshd.service.
 systemctl start sshd.service
 systemctl restart sshd.service
+
+ssh-keygen -t  rsa
+ssh-copy-id -i  ~/.ssh/id_rsa.pub 59.110.214.123
