@@ -1,3 +1,4 @@
+-------------vim---------
 #keyboard macro
 qa-z/A-z  a operate q
 #set vim variable
@@ -12,3 +13,14 @@ insert mode ctr-r=i<enter>
 :reg a
 #command mode useing keyboard macro
 :normal @a
+#vim keyboard using
+~ case conversion
+-------------vim---------
+--------vimrc------------
+#vimrc variable
+b:name	variables that are only valid for the current buffer
+w:name	variables valid only for the current window
+g:name	global variables
+v:name	vim predefined variables
+a:name	the argument of the function
+--------vimrc------------
