@@ -4,8 +4,6 @@ cat .ssh/id_rsa.pub
 ssh git@github.com
 
 
-
-
 -----------------------------------
 git init
 git add file
