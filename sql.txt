@@ -1,0 +1,4 @@
+#export database to text
+sqlite3 xx.db .dump > xxx.sql
+#export text to database
+sqlite3 xx.db < xxx.sql
