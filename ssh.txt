@@ -4,4 +4,5 @@ systemctl start sshd.service
 systemctl restart sshd.service
 
 ssh-keygen -t  rsa
+#this command will send your id_rsa.pub to the authorized_keys file of the machine you specify
 ssh-copy-id -i  ~/.ssh/id_rsa.pub 59.110.214.123
