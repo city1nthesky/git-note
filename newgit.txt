@@ -42,3 +42,6 @@ git pull --rebase origin master
 
 //update code
 git pull
+
+//add all changed file
+git add .

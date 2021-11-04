@@ -126,5 +126,6 @@ https://git.netfilter.org/libnetfilter_queue/
 https://www.netfilter.org/
 https://blog.csdn.net/Harold_Finch/article/details/53192244
 https://www.cnblogs.com/dpf-10/p/7899237.html
-https://blog.csdn.net/prahs/article/details/55259094?spm=1001.2101.3001.6650.6&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-6.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7Edefault-6.no_search_link
 https://blog.csdn.net/prahs/article/details/55259094
+https://www.cnblogs.com/x_wukong/p/5922779.html
+http://blog.chinaunix.net/uid-10167808-id-25929.html
