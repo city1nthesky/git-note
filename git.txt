@@ -12,3 +12,6 @@ git remote -v
 git branch
 git push origin master
 
+
+git config --global -l
+git config --global --unset http.sslverify                                                                                   17:06
