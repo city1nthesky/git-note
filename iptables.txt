@@ -130,3 +130,8 @@ https://blog.csdn.net/prahs/article/details/55259094
 https://www.cnblogs.com/x_wukong/p/5922779.html
 http://blog.chinaunix.net/uid-10167808-id-25929.html
 https://home.regit.org/netfilter-en/using-nfqueue-and-libnetfilter_queue/
+https://blog.csdn.net/wuruixn/article/details/7957368
+https://zhuanlan.zhihu.com/p/93630586
+https://blog.csdn.net/jasonchen_gbd/article/details/44877543
+https://blog.csdn.net/qq_35493457
+https://blog.csdn.net/iteye_15223/article/details/81650605
