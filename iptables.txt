@@ -135,3 +135,8 @@ https://zhuanlan.zhihu.com/p/93630586
 https://blog.csdn.net/jasonchen_gbd/article/details/44877543
 https://blog.csdn.net/qq_35493457
 https://blog.csdn.net/iteye_15223/article/details/81650605
+https://blog.csdn.net/haolipengzhanshen/article/details/84888489
+https://blog.csdn.net/xiangminlu/article/details/103439260
+https://zhuanlan.zhihu.com/p/366176662
+https://zhuanlan.zhihu.com/p/81866818
+https://www.netfilter.org/documentation/HOWTO/netfilter-hacking-HOWTO-1.html#ss1.1
